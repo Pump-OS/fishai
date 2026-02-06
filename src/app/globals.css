@@ -1,0 +1,299 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --bg-primary: #1a1a12;
+  --bg-secondary: #2a2a1e;
+  --bg-ocean: #1a3c40;
+  --text-primary: #cccccc;
+  --text-secondary: #999999;
+  --accent: #c8b06a;
+  --rust-orange: #cd6133;
+  --rust-dark: #9f3b1c;
+  --green-option: #6b8e3a;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #222;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+*::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+body {
+  background: transparent;
+  color: var(--text-primary);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ─── Rust NPC Dialog (matches game UI) ──────────────────── */
+.npc-dialog {
+  @apply relative p-0 overflow-hidden;
+  background: rgba(60, 55, 45, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(100, 90, 70, 0.4);
+}
+
+/* Simple inline quote variant */
+.npc-quote {
+  @apply px-4 py-3 text-sm;
+  background: rgba(60, 55, 45, 0.88);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(100, 90, 70, 0.3);
+  color: #bbb;
+}
+
+.npc-dialog-header {
+  @apply px-4 py-2 text-sm font-bold text-white;
+  background: rgba(80, 70, 55, 0.95);
+  border-bottom: 1px solid rgba(100, 90, 70, 0.3);
+}
+
+.npc-dialog-body {
+  @apply px-4 py-3 text-sm leading-relaxed;
+  color: #ccc;
+}
+
+.npc-dialog-options {
+  @apply px-4 py-2;
+  background: rgba(50, 48, 38, 0.8);
+  border-top: 1px solid rgba(100, 90, 70, 0.3);
+}
+
+.npc-dialog-option {
+  @apply flex items-center gap-2 py-1 text-sm cursor-pointer transition-colors;
+  color: #ccc;
+}
+.npc-dialog-option:hover {
+  color: #fff;
+}
+
+.npc-dialog-option-num {
+  @apply inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-white;
+  background: var(--green-option);
+}
+
+.npc-dialog-close {
+  @apply absolute top-1 right-1 w-6 h-6 flex items-center justify-center text-xs font-bold text-white cursor-pointer;
+  background: #cd4133;
+}
+.npc-dialog-close:hover {
+  background: #e04535;
+}
+
+/* ─── Gritty card style ──────────────────────────────────── */
+.rust-card {
+  @apply relative overflow-hidden;
+  background: rgba(55, 50, 42, 0.88);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(90, 82, 65, 0.5);
+}
+
+.rust-card::after {
+  content: '';
+  @apply absolute inset-0 pointer-events-none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.02) 3px,
+    rgba(0, 0, 0, 0.02) 6px
+  );
+}
+
+/* ─── Score badges ───────────────────────────────────────── */
+.score-legendary {
+  @apply font-bold;
+  color: #f0c040;
+  text-shadow: 0 0 8px rgba(240, 192, 64, 0.4);
+}
+.score-epic {
+  @apply font-bold;
+  color: #b070d0;
+  text-shadow: 0 0 8px rgba(176, 112, 208, 0.4);
+}
+.score-rare {
+  @apply font-bold;
+  color: #5599cc;
+}
+.score-common {
+  color: #999;
+}
+
+/* ─── Game-style button ──────────────────────────────────── */
+.btn-rust {
+  @apply px-6 py-3 font-bold text-white uppercase tracking-wider text-sm transition-all duration-150;
+  background: rgba(140, 80, 40, 0.85);
+  border: 1px solid rgba(180, 120, 60, 0.5);
+  letter-spacing: 0.05em;
+}
+.btn-rust:hover {
+  background: rgba(160, 95, 50, 0.95);
+  border-color: rgba(200, 140, 70, 0.7);
+}
+.btn-rust:active {
+  background: rgba(120, 70, 35, 0.95);
+}
+.btn-rust:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Secondary button (outline style) */
+.btn-rust-outline {
+  @apply px-6 py-3 font-bold uppercase tracking-wider text-sm transition-all duration-150;
+  color: #ccc;
+  background: rgba(60, 55, 45, 0.6);
+  border: 1px solid rgba(100, 90, 70, 0.5);
+}
+.btn-rust-outline:hover {
+  background: rgba(75, 68, 55, 0.8);
+  border-color: rgba(140, 125, 90, 0.6);
+  color: #fff;
+}
+
+/* ─── Input game style ───────────────────────────────────── */
+.input-rust {
+  @apply w-full px-4 py-3 text-sm
+         focus:outline-none transition-colors;
+  background: rgba(40, 38, 32, 0.9);
+  border: 1px solid rgba(80, 72, 58, 0.5);
+  color: #ccc;
+}
+.input-rust::placeholder {
+  color: rgba(160, 150, 130, 0.35);
+}
+.input-rust:focus {
+  border-color: rgba(200, 176, 106, 0.5);
+  background: rgba(45, 42, 35, 0.95);
+}
+
+/* ─── Select game style ──────────────────────────────────── */
+.select-rust {
+  @apply w-full px-4 py-3 text-sm
+         focus:outline-none transition-colors appearance-none cursor-pointer;
+  background: rgba(40, 38, 32, 0.9);
+  border: 1px solid rgba(80, 72, 58, 0.5);
+  color: #ccc;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23999' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+}
+.select-rust:focus {
+  border-color: rgba(200, 176, 106, 0.5);
+}
+
+/* ─── Tooltip ────────────────────────────────────────────── */
+.tooltip-rust {
+  @apply absolute z-50 px-3 py-2 text-xs whitespace-nowrap;
+  background: rgba(50, 48, 38, 0.95);
+  border: 1px solid rgba(100, 90, 70, 0.5);
+  color: #ccc;
+}
+
+/* ─── Loading shimmer ────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-rust {
+  background: linear-gradient(90deg, #2a2a1e 25%, #3a3a2e 50%, #2a2a1e 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ─── Music toggle ───────────────────────────────────────── */
+@keyframes music-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.music-playing {
+  animation: music-pulse 2s ease-in-out infinite;
+}
+
+/* ─── Video Background ───────────────────────────────────── */
+.video-bg-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.video-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 6, 0.65);
+  backdrop-filter: blur(1px);
+}
+
+/* ─── Loading Screen ─────────────────────────────────────── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.loading-screen-exit {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.loading-fish {
+  animation: fish-bob 2s ease-in-out infinite;
+}
+
+@keyframes fish-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-12px) rotate(-3deg); }
+  75% { transform: translateY(-6px) rotate(2deg); }
+}
+
+.loading-bar-fill {
+  background: linear-gradient(90deg, #8c5028, #c8b06a, #8c5028);
+  background-size: 200% 100%;
+  animation: bar-glow 2s ease-in-out infinite;
+}
+
+@keyframes bar-glow {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading-enter-arrow {
+  display: inline-block;
+  animation: arrow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes arrow-pulse {
+  0%, 100% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(4px); opacity: 0.7; }
+}
