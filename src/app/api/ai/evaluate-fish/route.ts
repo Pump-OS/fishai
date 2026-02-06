@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
     const result = {
       id: `catch-${Date.now()}`,
       user_id: "guest",
-      photo_url: URL.createObjectURL ? "" : "",
+      photo_url: "",
       photo_path: null,
       species_guess: evaluation.species_guess,
       confidence: evaluation.confidence,
@@ -101,3 +101,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
