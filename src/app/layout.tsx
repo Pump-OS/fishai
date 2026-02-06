@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   title: "FishAI — Rust Fishing Village Advisor",
   description:
     "AI-powered fishing assistant. Upload catches, get scored, talk to the Fisherman NPC.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "FishAI — Rust Fishing Village Advisor",
     description: "Your Fisherman NPC companion. Upload. Score. Flex.",
